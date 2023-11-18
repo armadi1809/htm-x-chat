@@ -1,0 +1,27 @@
+{{define "Home"}}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://unpkg.com/htmx.org@1.9.8"
+      integrity="sha384-rgjA7mptc2ETQqXoYC3/zJvkU7K/aP44Y+z7xQuJiVnB/422P/Ak+F/AqFR7E4Wr"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/ws.js"></script>
+
+    <title>Home Page</title>
+  </head>
+  <body>
+    <div hx-ext="ws" ws-connect="/ws">
+      <div id="notifications"></div>
+      <div id="chat_room">...</div>
+      <form id="form" ws-send>
+        <label for="">Enter test message</label>
+        <input id="chat_message" name="chat_message" />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </body>
+</html>
+{{end}}
