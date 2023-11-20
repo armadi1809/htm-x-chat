@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/output.css" rel="stylesheet" />
     <script
       src="https://unpkg.com/htmx.org@1.9.8"
       integrity="sha384-rgjA7mptc2ETQqXoYC3/zJvkU7K/aP44Y+z7xQuJiVnB/422P/Ak+F/AqFR7E4Wr"
@@ -12,15 +13,26 @@
 
     <title>Home Page</title>
   </head>
-  <body>
-    <div hx-ext="ws" ws-connect="/ws">
-      <div id="notifications"></div>
-      <div id="chat_room">...</div>
-      <form id="form" ws-send>
-        <label for="">Enter test message</label>
-        <input id="chat_message" name="chat_message" />
-        <button type="submit">Send</button>
-      </form>
+  <body class="h-screen bg-black">
+    <div
+      class="flex h-full flex-col justify-center container mx-auto items-center gap-8 p-4"
+    >
+      <div class="text-white">Header is here</div>
+      <div class="text-white flex-1">Messages go here</div>
+      <div class="w-full" hx-ext="ws" ws-connect="/ws">
+        <form
+          id="form"
+          ws-send
+          class="w-full flex items-center justify-center gap-4"
+        >
+          <input
+            class="rounded-md border-slate-300 bg-transparent text-white border-2 w-1/2 px-2"
+            id="chat_message"
+            name="chat_message"
+          />
+          <button type="submit" class="text-white rounded-md">Send</button>
+        </form>
+      </div>
     </div>
   </body>
 </html>

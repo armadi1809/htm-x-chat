@@ -28,8 +28,11 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.Renderer = app.t
+
 	e.GET("/", app.HomePage)
 	e.GET("/ws", socketConnection)
+
+	e.Static("/css", "css")
 	log.Println("Spinning up the server...")
 
 	e.Logger.Fatal(e.Start(":3000"))
