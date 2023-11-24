@@ -18,7 +18,7 @@
       class="flex h-full flex-col justify-center container mx-auto items-center gap-8 p-4"
     >
       <div class="text-white">Header is here</div>
-      <div class="text-white flex-1">Messages go here</div>
+      <div id="chat-box" class="text-white flex-1"></div>
       <div class="w-full" hx-ext="ws" ws-connect="/ws">
         <form
           id="form"
@@ -27,8 +27,8 @@
         >
           <input
             class="rounded-md border-slate-300 bg-transparent text-white border-2 w-1/2 px-2"
-            id="chat_message"
-            name="chat_message"
+            id="chatMessage"
+            name="chatMessage"
           />
           <button type="submit" class="text-white rounded-md">Send</button>
         </form>
