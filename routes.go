@@ -15,6 +15,8 @@ func (app *Config) routes() *echo.Echo {
 	e.Static("/css", "css")
 	e.GET("/", app.HomePage)
 	e.GET("/ws", app.connectOnRequest)
+	e.GET("/SignUp", app.SignUp)
+	e.POST("/SignUp", app.SignUserUp)
 
 	return e
 }
