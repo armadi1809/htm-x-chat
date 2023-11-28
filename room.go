@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/gorilla/websocket"
-	"github.com/labstack/echo/v4"
 )
 
 type room struct {
@@ -26,26 +25,6 @@ func NewRoom() *room {
 var (
 	upgrader = websocket.Upgrader{}
 )
-
-func (r *room) connectOnRequest(c echo.Context) error {
-	ws, err := upgrader.Upgrade(c.Response(), c.Request(), nil)
-	if err != nil {
-		return err
-	}
-
-	client := &client{
-		room:   r,
-		socket: ws,
-		send:   make(chan string, 256),
-	}
-
-	r.join <- client
-	defer func() { r.leave <- client }()
-	go client.write()
-	client.read()
-
-	return nil
-}
 
 func (r *room) run() error {
 	for {
